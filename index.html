@@ -2,6 +2,24 @@
 <title>
 Netlify Trial
 </title>
+<javascript>
+function createGameBoard()
+{
+var chessPieces = ["K", "Q", "R"];
+var boardStr = "<table>";
+for (var i=0; i<2; i++) {
+   boardStr += "<tr>";
+   for (var j=0; j<2; j++) {
+      boardStr += "<td>";
+      boardStr += "<img src='./Pieces/White/'+ chessPieces[i] +'.png' alt='White king'>";//<!-- height="42" width="42"--> 
+      boardStr += "</td>";
+   }
+   boardStr += "</tr>";
+}
+boardStr += "</table>";
+document.getElementById("GameBoard").innerHTML = boardStr;
+}
+</javascript>
 <body>
 Hello Netlify World!
 <table>
@@ -22,7 +40,10 @@ Hello Netlify World!
    <img src="./Pieces/Black/Q.png" alt="White king"><!-- height="42" width="42"--> 
 </td>
 </tr>
-
 </table>
+<p id="GameBoard"></p>
+<javascript>
+createGameBoard();
+</javascript>
 </body>
 </html>
