@@ -19,7 +19,11 @@ for (var i=0; i<8; i++) {
          else if (i==6) boardStr += "<img src='./Pieces/White/p.png";
          else if (i==0) boardStr += "<img src='./Pieces/Black/";
          else if (i==7) boardStr += "<img src='./Pieces/White/";
-         boardStr += chessPieces[j] + ".png' alt='White king'";
+         
+         if ((i==0)||(i==7)) {
+            boardStr += chessPieces[j] + ".png' alt='White king'";
+         }
+         
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
          continue;
