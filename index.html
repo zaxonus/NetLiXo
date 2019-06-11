@@ -12,9 +12,9 @@ pieceSide = 100;
 boardStr = "<table>";
 for (var i=0; i<2; i++) {
    boardStr += "<tr>";
-   for (var j=0; j<2; j++) {
+   for (var j=0; j<3; j++) {
       boardStr += "<td>";
-      boardStr += "<img src='./Pieces/White/" + chessPieces[i] + ".png' alt='White king'";
+      boardStr += "<img src='./Pieces/White/" + chessPieces[j] + ".png' alt='White king'";
       boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
       boardStr += "</td>";
    }
