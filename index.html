@@ -10,15 +10,22 @@ function createGameBoard()
 var chessPieces = ["R", "N", "B", "Q", "K", "B", "N", "R"],
 pieceSide = 100;
 boardStr = "<table>";
-for (var i=0; i<2; i++) {
+for (var i=0; i<8; i++) {
    boardStr += "<tr>";
    for (var j=0; j<8; j++) {
       boardStr += "<td>";
-      if (i==0) boardStr += "<img src='./Pieces/Black/";
-      else boardStr += "<img src='./Pieces/White/";
-      boardStr += chessPieces[j] + ".png' alt='White king'";
-      boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
-      boardStr += "</td>";
+      if (i<2)||(i>5) {
+         if (i==1) boardStr += "<img src='./Pieces/Black/p.png";
+         else if (i==6) boardStr += "<img src='./Pieces/White/p.png";
+         else if (i==0) boardStr += "<img src='./Pieces/Black/";
+         else if (i==7) boardStr += "<img src='./Pieces/White/";
+         boardStr += chessPieces[j] + ".png' alt='White king'";
+         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
+         boardStr += "</td>";
+         continue;
+      } else {
+         boardStr += "</td>";
+      }
    }
    boardStr += "</tr>";
 }
