@@ -15,7 +15,7 @@ for (var i=0; i<8; i++) {
    for (var j=0; j<8; j++) {
       if ((i+j)%2) boardStr += "<td bgcolor=#08A7B3";
       else boardStr += "<td bgcolor=#F8F7E3";
-      boardStr +=" onClick='squareClick(event)'>";
+      boardStr +=" onClick='squareClick(event,j)'>";
       
       if ((i<2)||(i>5)) {
          if (i==1) boardStr += "<img src='./Pieces/Black/P.png'";
@@ -43,9 +43,9 @@ document.getElementById("GameBoard").innerHTML = boardStr;
 }
 
 
-function squareClick(event)
+function squareClick(event,col)
 {
-document.getElementById("ClickPanel").innerHTML = 'W:' + event.which + 'B:' + event.button;
+document.getElementById("ClickPanel").innerHTML = 'W:' + event.which + 'B:' + event.button + 'B:' + col.toString();
 }
 </script>
 </head>
