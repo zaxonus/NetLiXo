@@ -47,7 +47,7 @@ document.getElementById("GameBoard").innerHTML = boardStr;
 
 function squareClick(event/*,col*/)
 {
-   var element = event.this;//document.getElementById('GameBoard');
+   var element = event.target;//document.getElementById('GameBoard');
 var topPos = element.getBoundingClientRect().top;// + window.scrollY;
 var leftPos = element.getBoundingClientRect().left;// + window.scrollX;
    
