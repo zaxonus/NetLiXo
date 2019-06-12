@@ -47,7 +47,7 @@ document.getElementById("GameBoard").innerHTML = boardStr;
 
 function squareClick(event/*,col*/)
 {
-document.getElementById("ClickPanel").innerHTML = 'W:' + event.which + ' B:' + event.button;// + ' C:' + col;
+document.getElementById("ClickPanel").innerHTML = 'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY;// + ' C:' + col;
    /*function clickHandler(event) {
       document.getElementById("ClickPanel").innerHTML = "Hihu";
    }
