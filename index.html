@@ -54,7 +54,11 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
    var displayString = 'W:' + event.which + ' B:' + event.button;
    var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
    
-   var displayString3 = displayString + 'LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
+   var displayString3 = displayString + ' LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
+   displayString3 += ' RRT: ' + document.getElementById("GameBoard").getBoundingClientRect().right;
+   displayString3 += ' LLT2: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
+   displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
+   
    
 document.getElementById("ClickPanel").innerHTML = displayString + displayString2 + displayString3;
    //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
