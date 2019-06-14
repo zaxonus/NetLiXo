@@ -9,7 +9,7 @@ function createGameBoard()
 {
 var chessPieces = ["R", "N", "B", "Q", "K", "B", "N", "R"],
 pieceSide = 60;
-boardStr = "<table>";
+boardStr = "<table id="GameSquare">";
 for (var i=0; i<8; i++) {
    boardStr += "<tr>";
    for (var j=0; j<8; j++) {
@@ -51,7 +51,13 @@ function squareClick(event/*,col*/)
 var topPos = element.getBoundingClientRect().top + window.scrollY;
 var leftPos = element.getBoundingClientRect().left + window.scrollX;
    
-document.getElementById("ClickPanel").innerHTML = 'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
+   var displayString = 'W:' + event.which + ' B:' + event.button;
+   displayString += ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
+   
+   displayString += 'LLT: ' + document.querySelector('GameSquare').getBoundingClientRect().left;
+   
+document.getElementById("ClickPanel").innerHTML = displayString;
+   //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
    /*function clickHandler(event) {
       document.getElementById("ClickPanel").innerHTML = "Hihu";
    }
