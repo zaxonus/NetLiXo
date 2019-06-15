@@ -52,7 +52,7 @@ var topPos = element.getBoundingClientRect().top + window.scrollY;
 var leftPos = element.getBoundingClientRect().left + window.scrollX;
    var pieceSide = 60;
    let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
-   rightWall = leftWall + pieceSide, colNbr = -1;
+   rightWall = leftWall + pieceSide - 2.0, colNbr = -1;
    //var i;
    for (var i=0; i<8; i++) {
       if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
@@ -60,8 +60,8 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
          break;
       }
       
-      leftWall += pieceSide+6.0;
-      rightWall = leftWall + pieceSide;
+      leftWall += pieceSide + 6.0;
+      rightWall = leftWall + pieceSide - 2.0;
    }
    
    var displayString = 'W:' + event.which + ' B:' + event.button;
