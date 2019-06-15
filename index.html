@@ -12,13 +12,12 @@ function createGameBoard()
 {
 var chessPieces = ["R", "N", "B", "Q", "K", "B", "N", "R"],
 boardStr = "<table id='GameSquare'>";
-for (var i=0; i<8; i++) {
+
+for (let i=0; i<8; i++) {
    boardStr += "<tr>";
-   for (var j=0; j<8; j++) {
+   for (let j=0; j<8; j++) {
       if ((i+j)%2) boardStr += "<td bgcolor=#08A7B3";
       else boardStr += "<td bgcolor=#F8F7E3";
-      //boardStr +=" onClick='squareClick(event/*,j.toString()*/)'>";
-      //boardStr +=" onClick='squareClick(event,j)'>";
       boardStr +=" onClick='squareClick(event)'>";
       
       if ((i<2)||(i>5)) {
@@ -49,45 +48,45 @@ document.getElementById("GameBoard").innerHTML = boardStr;
 
 function squareClick(event/*,col*/)
 {
-   var element = event.target;//document.getElementById('GameBoard');
-//var topPos = element.getBoundingClientRect().top + window.scrollY;
-//var leftPos = element.getBoundingClientRect().left + window.scrollX;
-   //var pieceSide = 60;
-   let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
-   horizShift = pieceSide + 6.0, sideHitSpan = pieceSide - 2.0;
-   rightWall = leftWall + sideHitSpan, colNbr = -1;
-   //var i;
-   for (let i=0; i<8; i++) {
-      if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
-         colNbr = i;
-         break;
+let element = event.target,
+leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
+horizShift = pieceSide + 5.0, sideHitSpan = pieceSide - 2.0;
+rightWall = leftWall + sideHitSpan, colNbr = -1, rowNbr = -1,
+topWall = document.getElementById("GameSquare").getBoundingClientRect().top,
+bottomWall = leftWall + topWall;
+
+for (let i=0; i<8; i++) {
+   if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
+      colNbr = i;
+      
+      for (let j=0; j<8; j++) {
+         if ((event.clientY>topWall)&&(event.clientY<bottomWall)) {
+            rowNbr = j;
+            break;
+         }
+         
+         topWall += horizShift;
+         bottomWall = topWall + sideHitSpan;
       }
       
-      leftWall += horizShift;
-      rightWall = leftWall + sideHitSpan;
+      break;
    }
    
-   var displayString = 'W:' + event.which + ' B:' + event.button;
-   //var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;
-   displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
-   
-   /*var displayString3 = displayString + ' LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
-   displayString3 += ' RRT: ' + document.getElementById("GameBoard").getBoundingClientRect().right;
-   displayString3 += ' LLT2: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
-   displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;*/
-   
-   displayString += ' GBL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
-   displayString += ' GBR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
-   displayString += ' GBT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
-   displayString += ' GBB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
-   displayString += ' colNbr= ' + colNbr.toString();
-   
-document.getElementById("ClickPanel").innerHTML = displayString;// + displayString2 + displayString3;
-   //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
-   /*function clickHandler(event) {
-      document.getElementById("ClickPanel").innerHTML = "Hihu";
-   }
-   return clickHandler;*/
+   leftWall += horizShift;
+   rightWall = leftWall + sideHitSpan;
+}
+
+var displayString = 'W:' + event.which + ' B:' + event.button;
+displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
+
+displayString += ' GBL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
+displayString += ' GBR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
+displayString += ' GBT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
+displayString += ' GBB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
+displayString += ' colNbr= ' + colNbr.toString();
+displayString += ' rowNbr= ' + rowNbr.toString();
+
+document.getElementById("ClickPanel").innerHTML = displayString;
 }
 </script>
 </head>
