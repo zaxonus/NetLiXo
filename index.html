@@ -52,7 +52,7 @@ let element = event.target,
 leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
 horizShift = pieceSide + 5.0, sideHitSpan = pieceSide - 2.0;
 rightWall = leftWall + sideHitSpan, colNbr = -1, rowNbr = -1,
-topWall = document.getElementById("GameSquare").getBoundingClientRect().top,
+topWall = document.getElementById("GameSquare").getBoundingClientRect().top + 12.0,
 bottomWall = topWall + sideHitSpan;
 
 for (let i=0; i<8; i++) {
