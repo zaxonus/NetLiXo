@@ -5,10 +5,12 @@
 Netlify Trial
 </title>
 <script>
+var pieceSide = 60;
+
+
 function createGameBoard()
 {
 var chessPieces = ["R", "N", "B", "Q", "K", "B", "N", "R"],
-pieceSide = 60;
 boardStr = "<table id='GameSquare'>";
 for (var i=0; i<8; i++) {
    boardStr += "<tr>";
@@ -48,30 +50,31 @@ document.getElementById("GameBoard").innerHTML = boardStr;
 function squareClick(event/*,col*/)
 {
    var element = event.target;//document.getElementById('GameBoard');
-var topPos = element.getBoundingClientRect().top + window.scrollY;
-var leftPos = element.getBoundingClientRect().left + window.scrollX;
-   var pieceSide = 60;
+//var topPos = element.getBoundingClientRect().top + window.scrollY;
+//var leftPos = element.getBoundingClientRect().left + window.scrollX;
+   //var pieceSide = 60;
    let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
-   rightWall = leftWall + pieceSide - 2.0, colNbr = -1;
+   horizShift = pieceSide + 6.0, sideHitSpan = pieceSide - 2.0;
+   rightWall = leftWall + sideHitSpan, colNbr = -1;
    //var i;
-   for (var i=0; i<8; i++) {
+   for (let i=0; i<8; i++) {
       if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
          colNbr = i;
          break;
       }
       
-      leftWall += pieceSide + 6.0;
-      rightWall = leftWall + pieceSide - 2.0;
+      leftWall += horizShift;
+      rightWall = leftWall + sideHitSpan;
    }
    
    var displayString = 'W:' + event.which + ' B:' + event.button;
    //var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;
    displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
    
-   var displayString3 = displayString + ' LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
+   /*var displayString3 = displayString + ' LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
    displayString3 += ' RRT: ' + document.getElementById("GameBoard").getBoundingClientRect().right;
    displayString3 += ' LLT2: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
-   displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
+   displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;*/
    
    displayString += ' GBL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
    displayString += ' GBR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
