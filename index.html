@@ -50,11 +50,11 @@ function squareClick(event/*,col*/)
    var element = event.target;//document.getElementById('GameBoard');
 var topPos = element.getBoundingClientRect().top + window.scrollY;
 var leftPos = element.getBoundingClientRect().left + window.scrollX;
-   
+   var pieceSide = 60;
    let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
    rightWall = leftWall + pieceSide, colNbr = -1;
-   var i;
-   for (i=0; i<8; i++) {
+   //var i;
+   for (var i=0; i<8; i++) {
       if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
          colNbr = i;
          break;
