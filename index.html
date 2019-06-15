@@ -73,7 +73,7 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
    displayString += ' GBR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
    displayString += ' GBT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
    displayString += ' GBB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
-   displayString += ' colNbr= ' + colNbr;
+   displayString += ' colNbr= ' + colNbr.toString();
    
 document.getElementById("ClickPanel").innerHTML = displayString;// + displayString2 + displayString3;
    //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
