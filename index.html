@@ -59,6 +59,9 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
          colNbr = i;
          break;
       }
+      
+      leftWall += pieceSide;
+      rightWall = leftWall + pieceSide;
    }
    
    var displayString = 'W:' + event.which + ' B:' + event.button;
