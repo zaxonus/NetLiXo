@@ -54,7 +54,7 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
    let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
    rightWall = leftWall + pieceSide, colNbr = -1;
    var i;
-   for (i=0; i<8; ++i) {
+   for (i=0; i<8; i++) {
       if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
          colNbr = i;
          break;
