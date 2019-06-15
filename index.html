@@ -52,15 +52,20 @@ var topPos = element.getBoundingClientRect().top + window.scrollY;
 var leftPos = element.getBoundingClientRect().left + window.scrollX;
    
    var displayString = 'W:' + event.which + ' B:' + event.button;
-   var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
+   //var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;
+   displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
    
    var displayString3 = displayString + ' LLT: ' + document.getElementById("GameBoard").getBoundingClientRect().left;
    displayString3 += ' RRT: ' + document.getElementById("GameBoard").getBoundingClientRect().right;
    displayString3 += ' LLT2: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
    displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
    
+   displayString += ' BL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
+   displayString += ' RR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
+   displayString += ' BT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
+   displayString += ' BB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
    
-document.getElementById("ClickPanel").innerHTML = displayString + displayString2 + displayString3;
+document.getElementById("ClickPanel").innerHTML = displayString;// + displayString2 + displayString3;
    //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
    /*function clickHandler(event) {
       document.getElementById("ClickPanel").innerHTML = "Hihu";
