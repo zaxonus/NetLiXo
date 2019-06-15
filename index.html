@@ -51,6 +51,15 @@ function squareClick(event/*,col*/)
 var topPos = element.getBoundingClientRect().top + window.scrollY;
 var leftPos = element.getBoundingClientRect().left + window.scrollX;
    
+   let leftWall = document.getElementById("GameSquare").getBoundingClientRect().left,
+   rightWall = leftWall + pieceSide, colNbr = -1;
+   for (var i=0; i<8; ++i) {
+      if ((event.clientX>leftWall)&&(event.clientX<rightWall)) {
+         colNbr = i;
+         break;
+      }
+   }
+   
    var displayString = 'W:' + event.which + ' B:' + event.button;
    //var displayString2 = displayString + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;
    displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
@@ -60,10 +69,11 @@ var leftPos = element.getBoundingClientRect().left + window.scrollX;
    displayString3 += ' LLT2: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
    displayString3 += ' RRT2: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
    
-   displayString += ' BL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
-   displayString += ' RR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
-   displayString += ' BT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
-   displayString += ' BB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
+   displayString += ' GBL: ' + document.getElementById("GameSquare").getBoundingClientRect().left;
+   displayString += ' GBR: ' + document.getElementById("GameSquare").getBoundingClientRect().right;
+   displayString += ' GBT: ' + document.getElementById("GameSquare").getBoundingClientRect().top;
+   displayString += ' GBB: ' + document.getElementById("GameSquare").getBoundingClientRect().bottom;
+   displayString += ' colNbr= ' + colNbr;
    
 document.getElementById("ClickPanel").innerHTML = displayString;// + displayString2 + displayString3;
    //'W:' + event.which + ' B:' + event.button + ' X:' + event.clientX + ' Y:' + event.clientY + ' T:' + topPos + ' L:' + leftPos;// + ' C:' + col;
