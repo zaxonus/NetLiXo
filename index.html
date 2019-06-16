@@ -88,6 +88,10 @@ displayString += ' colNbr= ' + colNbr.toString();
 displayString += ' rowNbr= ' + rowNbr.toString();
 
 document.getElementById("ClickPanel").innerHTML = displayString;
+   
+   if ((colNbr != -1) && (rowNbr != -1)) {
+      element.style.backgroundColor="red";
+   }
 }
 </script>
 </head>
