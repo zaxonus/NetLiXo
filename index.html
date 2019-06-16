@@ -5,7 +5,7 @@
 Netlify Trial
 </title>
 <script>
-var pieceSide = 60;
+var pieceSide = 60, currentSquare;
 
 
 function createGameBoard()
@@ -90,7 +90,15 @@ displayString += ' rowNbr= ' + rowNbr.toString();
 document.getElementById("ClickPanel").innerHTML = displayString;
    
    if ((colNbr != -1) && (rowNbr != -1)) {
+      currentSquare.style.backgroundColor = ((i+j)%2) ? '#08A7B3' : '#F8F7E3';
+         
+//                if ((i+j)%2) boardStr += "<td bgcolor=#08A7B3";
+//       else boardStr += "<td bgcolor=#F8F7E3";
+
+         
+         
       element.style.backgroundColor="red";
+      currentSquare = element;
    }
 }
 </script>
