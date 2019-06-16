@@ -90,13 +90,16 @@ displayString += ' rowNbr= ' + rowNbr.toString();
 document.getElementById("ClickPanel").innerHTML = displayString;
 
 if ((colNbr != -1) && (rowNbr != -1)) {
-   if (element == currentSquare) {
+   if (startFlag) startFlag = false;
+   else {
+      if (element == currentSquare) {
+         currentSquare.style.backgroundColor = currentWhite ? "#08A7B3" : "#F8F7E3";
+         return;
+      }
+      
       currentSquare.style.backgroundColor = currentWhite ? "#08A7B3" : "#F8F7E3";
-      return;
    }
    
-   if (startFlag) startFlag = false;
-   else currentSquare.style.backgroundColor = currentWhite ? "#08A7B3" : "#F8F7E3";
    element.style.backgroundColor="red";
    currentSquare = element;
    currentWhite = ((colNbr+rowNbr)%2) ? true : false;
