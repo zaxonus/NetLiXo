@@ -41,7 +41,7 @@ for (let i=0; i<8; i++) {
          boardStr += "<img src='./Pieces/Empty.png'";
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
-         rowArray.push("E");
+         rowArray.push(["E",false]);
       }
    }
    boardStr += "</tr>";
@@ -115,7 +115,7 @@ for (let i=0; i<8; i++) {
 }
 
 if ((prevCol != -1) && (prevRow != -1)) {
-   if (boardArray[prevRow][prevCol] != "E") boardArray[prevRow][prevCol] = "E";
+   if (boardArray[prevRow][prevCol][0] != "E") boardArray[prevRow][prevCol][0] = "E";
    refreshGameBoard();
 }
 
