@@ -63,7 +63,7 @@ for (let i=0; i<8; i++) {
       else boardStr += "<td bgcolor=#F8F7E3";
       boardStr +=" onClick='squareClick(event)'>";
       
-      if (boardArray[i][j]!="E") {
+      if (boardArray[i][j][0]!="E") {
          //boardStr += "<img src='./Pieces/Black/" + boardArray[i][j][0] + ".png'";
          boardStr += "<img src='./Pieces/";
          boardStr += boardArray[i][j][1] ? "White" : "Black";
