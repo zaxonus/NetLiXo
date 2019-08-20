@@ -64,7 +64,6 @@ for (let i=0; i<8; i++) {
       boardStr +=" onClick='squareClick(event)'>";
       
       if (boardArray[i][j][0]!="E") {
-         //boardStr += "<img src='./Pieces/Black/" + boardArray[i][j][0] + ".png'";
          boardStr += "<img src='./Pieces/";
          boardStr += boardArray[i][j][1] ? "White" : "Black";
          boardStr += "/" + boardArray[i][j][0] + ".png'";
@@ -115,8 +114,11 @@ for (let i=0; i<8; i++) {
 }
 
 if ((prevCol != -1) && (prevRow != -1)) {
-   if (boardArray[prevRow][prevCol][0] != "E") boardArray[prevRow][prevCol][0] = "E";
-   refreshGameBoard();
+   if (boardArray[prevRow][prevCol][0] != "E") {
+      boardArray[prevRow][prevCol][0] = "E";
+      boardArray[prevRow][prevCol][1] = false;
+      refreshGameBoard();
+   }
 }
 
 prevCol = colNbr; prevRow = rowNbr;
