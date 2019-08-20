@@ -114,7 +114,9 @@ for (let i=0; i<8; i++) {
 }
 
 if ((prevCol != -1) && (prevRow != -1)) {
-   if (boardArray[prevRow][prevCol][0] != "E") {
+   if ((boardArray[prevRow][prevCol][0] != "E") && (boardArray[rowNbr][colNbr][0] == "E")) {
+      boardArray[rowNbr][colNbr][0] = boardArray[prevRow][prevCol][0];
+      boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
       boardArray[prevRow][prevCol][0] = "E";
       boardArray[prevRow][prevCol][1] = false;
       refreshGameBoard();
