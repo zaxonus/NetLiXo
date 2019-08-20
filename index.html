@@ -31,12 +31,11 @@ for (let i=0; i<8; i++) {
          
          if ((i==0)||(i==7)) {
             boardStr += chessPieces[j] + ".png' alt='White king'";
-            rowArray.push(chessPieces[j]);
-         } else rowArray.push("P");
+            rowArray.push([chessPieces[j],i<2?false:true]);
+         } else rowArray.push(["P",i<2?false:true]);
          
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
-         //rowArray.push(chessPieces[j]);
          continue;
       } else {
          boardStr += "<img src='./Pieces/Empty.png'";
@@ -65,7 +64,7 @@ for (let i=0; i<8; i++) {
       boardStr +=" onClick='squareClick(event)'>";
       
       if (boardArray[i][j]!="E") {
-         boardStr += "<img src='./Pieces/Black/" + boardArray[i][j] + ".png'";
+         boardStr += "<img src='./Pieces/Black/" + boardArray[i][j][0] + ".png'";
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
       } else {
@@ -73,30 +72,8 @@ for (let i=0; i<8; i++) {
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
       }
-
-      /*if ((i<2)||(i>5)) {
-         if (i==1) boardStr += "<img src='./Pieces/Black/P.png'";
-         else if (i==6) boardStr += "<img src='./Pieces/White/P.png'";
-         else if (i==0) boardStr += "<img src='./Pieces/Black/";
-         else if (i==7) boardStr += "<img src='./Pieces/White/";
-         
-         if ((i==0)||(i==7)) {
-            boardStr += chessPieces[j] + ".png' alt='White king'";
-         }
-         
-         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
-         boardStr += "</td>";
-         rowArray.push(chessPieces[j]);
-         continue;
-      } else {
-         boardStr += "<img src='./Pieces/Empty.png'";
-         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
-         boardStr += "</td>";
-         rowArray.push("E");
-      }*/
    }
    boardStr += "</tr>";
-   //boardArray.push(rowArray);
 }
 boardStr += "</table>";
 document.getElementById("GameBoard").innerHTML = boardStr;
