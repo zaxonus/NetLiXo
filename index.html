@@ -31,11 +31,12 @@ for (let i=0; i<8; i++) {
          
          if ((i==0)||(i==7)) {
             boardStr += chessPieces[j] + ".png' alt='White king'";
-         }
+            rowArray.push(chessPieces[j]);
+         } else rowArray.push("P");
          
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
-         rowArray.push(chessPieces[j]);
+         //rowArray.push(chessPieces[j]);
          continue;
       } else {
          boardStr += "<img src='./Pieces/Empty.png'";
