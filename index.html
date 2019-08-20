@@ -64,7 +64,7 @@ for (let i=0; i<8; i++) {
       boardStr +=" onClick='squareClick(event)'>";
       
       if (boardArray[i][j]!="E") {
-         boardStr += "<img src='./Pieces/Black/" + rowArray[i][j] + ".png'";
+         boardStr += "<img src='./Pieces/Black/" + boardArray[i][j] + ".png'";
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
       } else {
