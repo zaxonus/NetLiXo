@@ -5,7 +5,9 @@
 Netlify Trial
 </title>
 <script>
-var pieceSide = 60, startFlag = true, currentSquare, currentWhite;
+var pieceSide = 60, startFlag = true, currentSquare, currentWhite,
+prevCol = -1, prevRow = -1,
+boardArray = [];
 
 
 function createGameBoard()
@@ -14,6 +16,7 @@ var chessPieces = ["R", "N", "B", "Q", "K", "B", "N", "R"],
 boardStr = "<table id='GameSquare'>";
 
 for (let i=0; i<8; i++) {
+   let rowArray = [];
    boardStr += "<tr>";
    for (let j=0; j<8; j++) {
       if ((i+j)%2) boardStr += "<td bgcolor=#08A7B3";
@@ -32,14 +35,67 @@ for (let i=0; i<8; i++) {
          
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
+         rowArray.push(chessPieces[j]);
          continue;
       } else {
          boardStr += "<img src='./Pieces/Empty.png'";
          boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
          boardStr += "</td>";
+         rowArray.push("E");
       }
    }
    boardStr += "</tr>";
+   boardArray.push(rowArray);
+}
+boardStr += "</table>";
+document.getElementById("GameBoard").innerHTML = boardStr;
+}
+
+
+function refreshGameBoard()
+{
+let boardStr = "<table id='GameSquare'>";
+
+for (let i=0; i<8; i++) {
+   boardStr += "<tr>";
+   for (let j=0; j<8; j++) {
+      if ((i+j)%2) boardStr += "<td bgcolor=#08A7B3";
+      else boardStr += "<td bgcolor=#F8F7E3";
+      boardStr +=" onClick='squareClick(event)'>";
+      
+      if (rowArray[i][j]!="E") {
+         boardStr += "<img src='./Pieces/Black/" + rowArray[i][j] + ".png'";
+         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
+         boardStr += "</td>";
+      } else {
+         boardStr += "<img src='./Pieces/Empty.png'";
+         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
+         boardStr += "</td>";
+      }
+
+      /*if ((i<2)||(i>5)) {
+         if (i==1) boardStr += "<img src='./Pieces/Black/P.png'";
+         else if (i==6) boardStr += "<img src='./Pieces/White/P.png'";
+         else if (i==0) boardStr += "<img src='./Pieces/Black/";
+         else if (i==7) boardStr += "<img src='./Pieces/White/";
+         
+         if ((i==0)||(i==7)) {
+            boardStr += chessPieces[j] + ".png' alt='White king'";
+         }
+         
+         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
+         boardStr += "</td>";
+         rowArray.push(chessPieces[j]);
+         continue;
+      } else {
+         boardStr += "<img src='./Pieces/Empty.png'";
+         boardStr += " height=" + pieceSide.toString() + " width=" + pieceSide.toString() + ">";
+         boardStr += "</td>";
+         rowArray.push("E");
+      }*/
+   }
+   boardStr += "</tr>";
+   //boardArray.push(rowArray);
 }
 boardStr += "</table>";
 document.getElementById("GameBoard").innerHTML = boardStr;
@@ -76,6 +132,13 @@ for (let i=0; i<8; i++) {
    leftWall += horizShift;
    rightWall = leftWall + sideHitSpan;
 }
+
+if ((prevCol != -1) && (prevRow != -1)) {
+   if (boardArray[prevRow][prevCol] != "E") boardArray[prevRow][prevCol] = "E";
+   refreshGameBoard();
+}
+
+prevCol = colNbr; prevRow = rowNbr;
 
 var displayString = 'W:' + event.which + ' B:' + event.button;
 displayString += ' X:' + event.clientX + ' Y:' + event.clientY;
