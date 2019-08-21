@@ -125,12 +125,14 @@ if ((prevCol != -1) && (prevRow != -1)) {
          // Illegal queen movement.
       } else if ((thePiece == "N") && (Math.abs(rowNbr-prevRow)*Math.abs(colNbr-prevCol)!=2)) {
          // Illegal knight movement.
+      } else if ((thePiece == "K") && ((Math.abs(rowNbr-prevRow)>1) || (Math.abs(colNbr-prevCol)>1))) {
+         // Illegal king movement.
       } else {
-      boardArray[rowNbr][colNbr][0] = thePiece;
-      boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
-      boardArray[prevRow][prevCol][0] = "E";
-      boardArray[prevRow][prevCol][1] = false;
-      refreshGameBoard();
+         boardArray[rowNbr][colNbr][0] = thePiece;
+         boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
+         boardArray[prevRow][prevCol][0] = "E";
+         boardArray[prevRow][prevCol][1] = false;
+         refreshGameBoard();
       }
    }
 }
