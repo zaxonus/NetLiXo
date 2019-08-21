@@ -117,6 +117,7 @@ if ((prevCol != -1) && (prevRow != -1)) {
    let thePiece = boardArray[prevRow][prevCol][0];
    if ((thePiece != "E") && (boardArray[rowNbr][colNbr][0] == "E")) {
       if ((thePiece == "B") && (Math.abs(rowNbr-prevRow)!=Math.abs(colNbr-prevCol))) {
+      } else if ((thePiece == "R") && (rowNbr!=prevRow) && (colNbr!=prevCol)) {
       } else {
       boardArray[rowNbr][colNbr][0] = thePiece;
       boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
