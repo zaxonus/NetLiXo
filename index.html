@@ -117,7 +117,12 @@ if ((prevCol != -1) && (prevRow != -1)) {
    let thePiece = boardArray[prevRow][prevCol][0];
    if ((thePiece != "E") && (boardArray[rowNbr][colNbr][0] == "E")) {
       if ((thePiece == "B") && (Math.abs(rowNbr-prevRow)!=Math.abs(colNbr-prevCol))) {
+         // Illegal bishop movement.
       } else if ((thePiece == "R") && (rowNbr!=prevRow) && (colNbr!=prevCol)) {
+         // Illegal rook movement.
+      } else if ((thePiece == "Q") && (rowNbr!=prevRow) && (colNbr!=prevCol) &&
+                 (Math.abs(rowNbr-prevRow)!=Math.abs(colNbr-prevCol))) {
+         // Illegal queen movement.
       } else {
       boardArray[rowNbr][colNbr][0] = thePiece;
       boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
