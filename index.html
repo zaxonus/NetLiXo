@@ -128,11 +128,46 @@ if ((prevCol != -1) && (prevRow != -1)) {
       } else if ((thePiece == "K") && ((Math.abs(rowNbr-prevRow)>1) || (Math.abs(colNbr-prevCol)>1))) {
          // Illegal king movement.
       } else {
-         boardArray[rowNbr][colNbr][0] = thePiece;
-         boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
-         boardArray[prevRow][prevCol][0] = "E";
-         boardArray[prevRow][prevCol][1] = false;
-         refreshGameBoard();
+         if (["R","B","Q"].includes(thePiece)) {
+            let obstacleFlag = false;
+            if (rowNbr==prevRow) {
+               let incremVal = (colNbr-prevCol) / Math.abs(colNbr-prevCol);
+               for (let i=prevCol+incremVal; i!=colNbr; i+=incremVal) {
+                  if (boardArray[rowNbr][i][0] != "E") {
+                     obstacleFlag = true;
+                     break;
+                  }
+               }
+            } else if (colNbr==prevCol) {
+               let incremVal = (rowNbr-prevRow) / Math.abs(rowNbr-prevRow);
+               for (let i=prevRow+incremVal; i!=rowNbr; i+=incremVal) {
+                  if (boardArray[i][colNbr][0] != "E") {
+                     obstacleFlag = true;
+                     break;
+                  }
+               }
+            } else /*(Math.abs(rowNbr-prevRow)==Math.abs(colNbr-prevCol))*/ {
+               let colIncrVal = (colNbr-prevCol) / Math.abs(colNbr-prevCol),
+               rowIncrVal = (rowNbr-prevRow) / Math.abs(rowNbr-prevRow);
+               for (let iCol=prevCol+colIncrVal, iRow=prevRow+rowIncrVal; 
+                    iCol!=colNbr; iCol+=colIncrVal, iRow+=rowIncrVal) {
+                  if (boardArray[iRow][iCol][0] != "E") {
+                     obstacleFlag = true;
+                     break;
+                  }
+               }
+            }
+         }
+         
+         if (obstacleFlag) {
+            // Jumping over another piece is illegal.
+         } else {
+            boardArray[rowNbr][colNbr][0] = thePiece;
+            boardArray[rowNbr][colNbr][1] = boardArray[prevRow][prevCol][1];
+            boardArray[prevRow][prevCol][0] = "E";
+            boardArray[prevRow][prevCol][1] = false;
+            refreshGameBoard();
+         }
       }
    }
 }
